@@ -23,5 +23,11 @@ public class Main {
         }
         System.out.println("Figura z najwiekszym obwodem: " + highestCircuit);
         System.out.println("Figura z najwiekszym polem: " + highestSurface);
+
+        for (Figure f : figures) {
+            if(f.equals(Figure.createRectangle(10, 20))) {
+                System.out.println("tu powinno wejsc");
+            }
+        }
     }
 }

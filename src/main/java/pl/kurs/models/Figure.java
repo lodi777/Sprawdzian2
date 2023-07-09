@@ -31,4 +31,16 @@ public abstract class Figure {
     public String toString() {
         return "Figura nr " + number + figureDescription();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Figure figure = (Figure) o;
+        return true;
+    }
 }
