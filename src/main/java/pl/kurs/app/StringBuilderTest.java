@@ -6,7 +6,7 @@ public class StringBuilderTest {
         long start1 = System.nanoTime();
 
         StringBuilder sb = new StringBuilder("0");
-        for (int i = 1; i < 1000; i++) {
+        for (int i = 1; i < 100000; i++) {
             sb.append(" ");
             sb.append(i);
         }
@@ -20,7 +20,7 @@ public class StringBuilderTest {
 
         long start2 = System.nanoTime();
         String w2 = "0";
-        for (int i = 1; i < 1000; i++) {
+        for (int i = 1; i < 100000; i++) {
             w2 = w2 + " " + i;
         }
         long stop2 = System.nanoTime();
@@ -32,6 +32,7 @@ public class StringBuilderTest {
 
     //Dlaczego StringBuilder jest szybszy:
     //1. jest mutowalny to znaczy ze mozna go modyfikowac bez tworzenia nowych obiektow
-    //2. Efektywnie zarządza pamięcią: zamiast tworzyć nowy obiekt rozszerza swoją pemięć wewnętrzną w ineligentny sposób.
+    //2. W przypadku Stringow każda operacja tworzy nowy obiekt, co prowadzi do zbędnego generowania dużych ilości obiektów w pamieci
     //3. Oferuje metody do efektywnej konkatenacji takiej jak append() ktore sa optymalizowane pod kątem wydajności.
+    //4. W przypadku Stringow za pomocą operatora "+"  generowane sa nowe obiekty stringa za kazdym razem co prowadzi do maronowania pamięci i czasu.
 }
