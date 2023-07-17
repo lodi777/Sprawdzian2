@@ -2,6 +2,8 @@ package pl.kurs.models;
 
 import pl.kurs.exceptions.IllegalValueException;
 
+import java.util.Objects;
+
 public abstract class Figure {
     public abstract double surface();
 
@@ -38,6 +40,34 @@ public abstract class Figure {
         return new Rectangle(sideA, sideB);
     }
 
+    public static Figure findFigureWithHighestCircuit(Figure[] figures) {
+        Figure figureWithHighestCircuit = null;
+        double maxCircuit = Double.MIN_VALUE;
+
+        for (Figure figure : figures) {
+            double circuit = figure.circuit();
+            if (circuit > maxCircuit) {
+                maxCircuit = circuit;
+                figureWithHighestCircuit = figure;
+            }
+        }
+        return figureWithHighestCircuit;
+    }
+
+    public static Figure findFigureWithHighestSurface(Figure[] figures) {
+        Figure figureWithHighestSurface = null;
+        double maxSurface = Double.MIN_VALUE;
+
+        for (Figure figure : figures) {
+            double surface = figure.surface();
+            if (surface > maxSurface) {
+                maxSurface = surface;
+                figureWithHighestSurface = figure;
+            }
+        }
+        return figureWithHighestSurface;
+    }
+
     @Override
     public String toString() {
         return "Figura nr " + number + figureDescription();
@@ -53,5 +83,10 @@ public abstract class Figure {
 
         Figure figure = (Figure) o;
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }

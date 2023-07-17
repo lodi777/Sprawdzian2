@@ -12,4 +12,5 @@ public class Employee extends Person {
     public int getSalary() {
         return salary;
     }
+
 }

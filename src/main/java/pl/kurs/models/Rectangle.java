@@ -1,5 +1,7 @@
 package pl.kurs.models;
 
+import java.util.Objects;
+
 public class Rectangle extends Figure {
 
     private double sideA;
@@ -25,4 +27,17 @@ public class Rectangle extends Figure {
         return ": Prostokąt o bokach " + sideA + "x" + sideB + ".";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Rectangle rectangle = (Rectangle) o;
+        return Double.compare(rectangle.sideA, sideA) == 0 && Double.compare(rectangle.sideB, sideB) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), sideA, sideB);
+    }
 }

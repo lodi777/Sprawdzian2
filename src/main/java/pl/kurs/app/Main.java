@@ -7,24 +7,16 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            Figure[] figures = {Figure.createSquare(100), Figure.createCircle(10), Figure.createRectangle(10, 20), Figure.createSquare(158)};
+            Figure[] figures = {Figure.createSquare(10), Figure.createCircle(10), Figure.createRectangle(10, 20), Figure.createSquare(15)};
             for (Figure f : figures) {
                 System.out.println(f);
             }
-            Figure highestCircuit = figures[0];
-            Figure highestSurface = figures[0];
 
-            for (int i = 1; i < figures.length; i++) {
-                if (figures[i].circuit() > highestCircuit.circuit()) {
-                    highestCircuit = figures[i];
-                }
+            Figure figureWithHighestCircuit = Figure.findFigureWithHighestCircuit(figures);
+            Figure figureWithHighestSurface = Figure.findFigureWithHighestSurface(figures);
 
-                if (figures[i].surface() > highestSurface.surface()) {
-                    highestSurface = figures[i];
-                }
-            }
-            System.out.println("Figura z najwiekszym obwodem: " + highestCircuit);
-            System.out.println("Figura z najwiekszym polem: " + highestSurface);
+            System.out.println("Figura z najwiekszym obwodem: " + figureWithHighestCircuit.figureDescription());
+            System.out.println("Figura z najwiekszym polem: " + figureWithHighestSurface.figureDescription());
 
             for (Figure f : figures) {
                 if(f.equals(Figure.createRectangle(10, 20))) {

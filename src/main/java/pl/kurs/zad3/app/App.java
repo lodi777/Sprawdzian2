@@ -14,23 +14,6 @@ public class App {
         personArray[3] = new Employee("Piotr", "Lis", "82070187654", "Wrocław", "Programista", 4000);
         personArray[4] = new Student("Katarzyna", "Mazurek", "00111554321", "Poznań", "C3", 1200);
 
-        Person personWithHighestSalary = personArray[0];
-        double highestSalary = personWithHighestSalary instanceof Student
-                ? ((Student) personWithHighestSalary).getScholarship()
-                : ((Employee) personWithHighestSalary).getSalary();
-
-        for (int i = 1; i < personArray.length; i++) {
-            Person person = personArray[i];
-            double salary = person instanceof Student
-                    ? ((Student) person).getScholarship()
-                    : ((Employee) person).getSalary();
-
-            if (salary > highestSalary) {
-                highestSalary = salary;
-                personWithHighestSalary = person;
-            }
-        }
-        System.out.println("Osoba z najwyższym dochodem: " + personWithHighestSalary.getFirstName() + " " + personWithHighestSalary.getSecondName());
 
 
         int numberOfWoman = 0;
@@ -41,5 +24,8 @@ public class App {
         }
 
         System.out.println("Liczba kobiet w tablicy: " + numberOfWoman);
+
+        Person personWithHighestSalary = Person.findPersonWithHighestSalary(personArray);
+        System.out.println("Osoba z najwiekszym dochodem: " + personWithHighestSalary);
     }
 }
